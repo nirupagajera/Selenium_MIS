@@ -102,5 +102,7 @@ public class AdminApproveProjectPage {
         Thread.sleep(5000);
 
         driver.findElement(By.xpath("//button[text() = 'Save']")).click();
+
+        System.out.println("Project approved successfully..");
     }
 }
