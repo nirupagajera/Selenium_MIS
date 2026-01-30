@@ -15,10 +15,19 @@ public abstract class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        // WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        // driver = new ChromeDriver();
+        // driver.manage().window().maximize();
+        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        options.addArguments("--headless=new");   // REQUIRED
+        options.addArguments("--no-sandbox");     // REQUIRED for GitHub Actions
+        options.addArguments("--disable-dev-shm-usage"); // Prevent crashes
+        options.addArguments("--disable-gpu");    // Linux safety
+        options.addArguments("--window-size=1920,1080");
+
+        WebDriver driver = new ChromeDriver(options);
+
     }
 
     @AfterMethod
