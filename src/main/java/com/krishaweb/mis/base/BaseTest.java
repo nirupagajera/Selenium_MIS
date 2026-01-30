@@ -25,7 +25,7 @@ public abstract class BaseTest {
         options.addArguments("--disable-dev-shm-usage"); // Prevent crashes
         options.addArguments("--disable-gpu");    // Linux safety
         options.addArguments("--window-size=1920,1080");
-
+        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver(options);
 
     }
